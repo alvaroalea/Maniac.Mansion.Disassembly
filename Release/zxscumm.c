@@ -1,4 +1,5 @@
 #include "zxscumm.h" 
+#include "MM.h"
 
 
 // GESTION DE SONIDO
@@ -99,8 +100,19 @@ void setState08(int n){
 
 }
 
+void setOwnerOf(int n,int m){
 
+}
 
+void pickupObject(int n){
 
+}
+        
+void printEgo(char *p){
 
+}
+
+void doSentence(int n, int m, int o){
+
+}
 

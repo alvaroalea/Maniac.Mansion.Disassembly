@@ -3,21 +3,21 @@
 #define FALSE 0
 
 
-// GESTION DE SONIDO
+// SOUND MANAGEMENT
 void stopSound(int n);
 void startSound(int n);
 void loadSound( int n);
 void stopMusic(void);
 void unlockSound(int n);
 
-// GESTION DE SCRIPTS
+// SCRIPTS MANAGEMENT
 bool isScriptRunning(int n);
 void startScript(int n);
 void stopScript(int n);
 void unlockScript(int n);
 void loadScript(int n);
 
-// PERSONAJES (ACTORES)
+// ACTORS
 void putActorInRoom(int actor, int room);
 void putActor(int actor, int x, int y);
 void animateActor(int actor, int a, int b);
@@ -26,15 +26,17 @@ void setActorBitVar(int actor, int bit, bool var);
 void loadCostume(int n);
 void lockCostume(int n);
 
-// OTROS
+// OTHERS
 void lights(int n);
-void stopObjectCode(void);
+void stopObjectCode(void); // Probably not needed
 void setBitVar(int a, int b, int c);
 bool getState08(int n);
 void clearState08(int n);
 void setState08(int n);
-
-
+void setOwnerOf(int n,int m);
+void pickupObject(int n);         
+void printEgo(char *p);
+void doSentence(int n, int m, int o);
 
 
 

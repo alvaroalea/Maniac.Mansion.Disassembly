@@ -5,13 +5,12 @@
  */
 
 #include "zxscumm.h"
+#include "MM.h"
 
 int VAR_RESULT;
 
 // TEMPORAL
 int Var[255];
-#define ACT_Weird_Ed 1
-
 
 // Dummy function for rooms without Entry or Exit functions.
 void R000_nothing (){
