@@ -1,7 +1,6 @@
 #include "zxscumm.h" 
 #include "MM.h"
 
-
 // GESTION DE SONIDO
 void stopSound(int n){
 
@@ -66,6 +65,10 @@ void setActorBitVar(int actor, int bit, bool var){
 
 }
 
+bool getActorBitVar(int actor, int bit){
+   return FALSE;
+}
+
 void loadCostume(int n){
 
 }
@@ -91,15 +94,31 @@ void setBitVar(int a, int b, int c){
 bool getState08(int n){
   return FALSE;
 }
+bool getState04(int n){
+  return FALSE;
+}
 
 void clearState08(int n){
+
+}
+
+void clearState04(int n){
+
+}
+
+void clearState02(int n){
 
 }
 
 void setState08(int n){
 
 }
+void setState04(int n){
 
+}
+void setState02(int n){
+
+}
 void setOwnerOf(int n,int m){
 
 }
@@ -112,7 +131,15 @@ void printEgo(char *p){
 
 }
 
+void print(int color, char *p){
+
+}
+
 void doSentence(int n, int m, int o){
+
+}
+
+void loadRoomWithEgo(int n,int m){
 
 }
 

@@ -4,7 +4,7 @@ The idea is to reuse the awesome work of Robert Crossfield to create a version o
 
 This is "work in progress" and probably never finished.
 
-## ROADMAP / TASK
+## ROADMAP / TASKs
 
 The main idea it's not use a VM (SCUMM) but a compiled version.
 creating a library with the scumm core and convert the information from Robert to compilable files
@@ -50,6 +50,19 @@ But Scripts are executed in thread along the game (I think a maximun of 8 thread
 This need to be investigated in deep. 
 
 excel file need to be translated to a junk of .h include files and general data for use with the game.
+
+
+## Some interesting references
+http://wiki.scummvm.org/index.php/About
+http://wiki.scummvm.org/index.php/SCUMM/Virtual_Machine
+http://wiki.scummvm.org/index.php/SCUMM/Technical_Reference
+
+https://github.com/juj/emscripten-scummvm
+https://github.com/jamesu/scummc
+
+https://bitbucket.org/jestar_jokin/scummpacker
+http://www.jestarjokin.net/apps/scummimg/
+
 
 
 # NOW, The original readme.md:

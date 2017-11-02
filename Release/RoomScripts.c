@@ -10,7 +10,7 @@
 int VAR_RESULT;
 
 // TEMPORAL
-int Var[255];
+
 
 // Dummy function for rooms without Entry or Exit functions.
 void R000_nothing (){
@@ -28,7 +28,7 @@ void R001_Entry(){
     /*[0007]*/ if (VAR_RESULT == 0) {
     /*[000C]*/   startScript(52);                                                   // No? start 'Repeat Outside Sound'
     /*[000E]*/ }
-    /*[000E]*/ stopObjectCode();
+    /*[000E]*/ //stopObjectCode();
 }
 
 void R001_Exit(){
@@ -52,7 +52,7 @@ void R001_Exit(){
     /*[0027]*/ if (VAR_RESULT == 1) {                                               // if Game: Meltdown Timer running
     /*[002C]*/   startSound(32);                                                    //  start Alarm 1
     /*[002E]*/ }
-    /*[002E]*/ stopObjectCode();
+    /*[002E]*/ //stopObjectCode();
 }
 
 
@@ -64,7 +64,7 @@ void R002_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);                                                       // stop Alarm 1
     /*[0004]*/ loadSound(27);
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 void R002_Exit(){
@@ -72,7 +72,7 @@ void R002_Exit(){
     /*[0003]*/ if (VAR_RESULT == 1) {
     /*[0008]*/   startSound(32);                                                    //  start Alarm 1
     /*[000A]*/ }
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 
@@ -94,7 +94,7 @@ void R003_Entry(){
     /*[0017]*/ if (Var[29] == 1) {                                                  // if Radio On
     /*[001C]*/   startSound(20);                                                    //  sound Radio Static
     /*[001E]*/ }
-    /*[001E]*/ stopObjectCode();
+    /*[001E]*/ //stopObjectCode();
 }
 
 void R003_Exit(){
@@ -103,7 +103,7 @@ void R003_Exit(){
     /*[0004]*/ stopSound(29);
     /*[0006]*/ stopSound(44);
     /*[0008]*/ stopMusic();
-    /*[0009]*/ stopObjectCode();
+    /*[0009]*/ //stopObjectCode();
 }
 
 
@@ -113,7 +113,7 @@ void R003_Exit(){
 
 void R004_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -123,13 +123,13 @@ void R004_Entry(){
 
 void R005_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R005_Exit(){
     /*[0000]*/ stopSound(24);                                                       // stop sound Library Phone Ring
     /*[0002]*/ stopSound(21);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -139,7 +139,7 @@ void R005_Exit(){
 void R006_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);                                                       // stop sound Alarm 1
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 void R006_Exit(){
@@ -147,7 +147,7 @@ void R006_Exit(){
     /*[0003]*/ if (VAR_RESULT == 1) {
     /*[0008]*/   startSound(32);                                                    // start sound Alarm 1
     /*[000A]*/ }
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 
@@ -161,13 +161,13 @@ void R007_Entry(){
     /*[0006]*/   startSound(17);                                                    //  sound Sink On
     /*[0008]*/ }
     /*[0008]*/ startScript(76);                                                     // start Jar / Envelop: Name
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 void R007_Exit(){
     /*[0000]*/ stopSound(17);                                                       // sound Sink off
     /*[0002]*/ unlockScript(30);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -178,12 +178,12 @@ void R007_Exit(){
 void R008_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
     /*[0002]*/ startScript(149);                                                    // start  -= Does Nothing =-
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 void R008_Exit(){
     /*[0000]*/ stopScript(149);                                                     // stop  -= Does Nothing =-
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -193,7 +193,7 @@ void R008_Exit(){
 
 void R009_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -205,12 +205,12 @@ void R010_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
     /*[0002]*/ startScript(18);                                                     // start Clock: Repeating Tick Sound
     /*[0004]*/ loadSound(28);
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 void R010_Exit(){
     /*[0000]*/ stopScript(18);                                                      // stop Clock: Repeating Tick Sound
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -220,7 +220,7 @@ void R010_Exit(){
 
 void R011_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -240,7 +240,7 @@ void R012_Entry(){
     /*[001B]*/     startScript(45);                                                 //      start Green Tentacle: Block until player feeds
     /*[001D]*/   }
     /*[001D]*/ }
-    /*[001D]*/ stopObjectCode();
+    /*[001D]*/ //stopObjectCode();
 }
 
 void R012_Exit(){
@@ -251,7 +251,7 @@ void R012_Exit(){
     /*[000C]*/   putActor(14,68,58);
     /*[0010]*/   Var[86] = 0;                                                       // Kid is in Level 2 - Level 3 hallway = No
     /*[0013]*/ }
-    /*[0013]*/ stopObjectCode();
+    /*[0013]*/ //stopObjectCode();
 }
 
 
@@ -261,7 +261,7 @@ void R012_Exit(){
 
 void R013_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -271,7 +271,7 @@ void R013_Entry(){
 
 void R014_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -281,7 +281,7 @@ void R014_Entry(){
 
 void R015_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -292,7 +292,7 @@ void R015_Entry(){
 void R016_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 void R160_Exit(){
@@ -300,7 +300,7 @@ void R160_Exit(){
     /*[0003]*/ if (VAR_RESULT == 1) {
     /*[0008]*/   startSound(32);                                                    // sound Alarm 1
     /*[000A]*/ }
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 
@@ -317,13 +317,13 @@ void R017_Entry(){
     /*[0011]*/     startSound(44);                                                  //   sound Bad Melody
     /*[0013]*/   }
     /*[0013]*/ }
-    /*[0013]*/ stopObjectCode();
+    /*[0013]*/ //stopObjectCode();
 }
 
 void R017_Exit(){
     /*[0000]*/ stopSound(25);                                                       // stop sound Tentacle Mating Call
     /*[0002]*/ stopSound(44);                                                       // stop sound Bad Melody
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -333,7 +333,7 @@ void R017_Exit(){
 
 void R018_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -351,7 +351,7 @@ void R019_Entry(){
     /*[0011]*/ if (VAR_RESULT == 1) {                                               // if Phone: Ringing
     /*[0016]*/   startScript(25);                                                   //  start Phone: Ringing
     /*[0018]*/ }
-    /*[0018]*/ stopObjectCode();
+    /*[0018]*/ //stopObjectCode();
 }
 
 
@@ -364,7 +364,7 @@ void R020_Entry(){
     /*[0002]*/ if (Var[80] == 1) {                                                  // if Green Tentacle: Has drank == Yes
     /*[0007]*/   startScript(103);                                                  //  start Green Tentacle: So Depressed
     /*[0009]*/ }
-    /*[0009]*/ stopObjectCode();
+    /*[0009]*/ //stopObjectCode();
 }
 
 void R020_Exit(){
@@ -375,7 +375,7 @@ void R020_Exit(){
     /*[0008]*/ stopSound(20);                                                       // stop sound
     /*[000A]*/ stopSound(44);                                                       // stop sound Bad Melody
     /*[000C]*/ stopMusic();
-    /*[000D]*/ stopObjectCode();
+    /*[000D]*/ //stopObjectCode();
 }
 
 
@@ -388,13 +388,13 @@ void R021_Entry(){
     /*[0002]*/ if (Var[28] == 1) {                                                  // if Radio (Room 21) == On
     /*[0007]*/   startSound(20);                                                    //  start sound radio static
     /*[0009]*/ }
-    /*[0009]*/ stopObjectCode();
+    /*[0009]*/ //stopObjectCode();
 }
 
 void R021_Exit(){
     /*[0000]*/ stopSound(20);                                                       //  stop sound radio static
     /*[0002]*/ stopSound(29);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 /**
@@ -403,7 +403,7 @@ void R021_Exit(){
 
 void R022_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -414,7 +414,7 @@ void R022_Entry(){
 void R023_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
     /*[0002]*/ startScript(78);                                                     // start DeveloperTray: Name
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -424,13 +424,13 @@ void R023_Entry(){
 
 void R024_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R024_Exit(){
     /*[0000]*/ stopSound(18);                                                       // stop sound
     /*[0002]*/ stopSound(17);                                                       // stop sound Sink On
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -442,7 +442,7 @@ void R025_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
     /*[0002]*/ loadSound(30);
     /*[0004]*/ loadSound(31);
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 
@@ -452,7 +452,7 @@ void R025_Entry(){
 
 void R026_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R026_Exit(){
@@ -466,7 +466,7 @@ void R026_Exit(){
     /*[0013]*/ if (VAR_RESULT == 26) {                                              // if weird ed in his room
     /*[0018]*/   stopScript(86);                                                    //  stop Weird Ed: Check for fri}ly actors
     /*[001A]*/ }
-    /*[001A]*/ stopObjectCode();
+    /*[001A]*/ //stopObjectCode();
 }
 
 
@@ -495,13 +495,13 @@ void R027_Entry(){
     /*[0034]*/     animateActor(19,6,1);                                            // Plant
     /*[0038]*/   }
     /*[0038]*/ }
-    /*[0038]*/ stopObjectCode();
+    /*[0038]*/ //stopObjectCode();
 }
 
 void R027_Exit(){
     /*[0000]*/ stopScript(46);                                                      // stop Plant Size
     /*[0002]*/ stopScript(49);                                                      // stop Plant: Burp
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -511,7 +511,7 @@ void R027_Exit(){
 
 void R028_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -521,12 +521,12 @@ void R028_Entry(){
 
 void R029_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R029_Exit(){
     /*[0000]*/ stopSound(18);
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -561,14 +561,14 @@ void R030_Entry(){
     /*[0042]*/   }
     /*[0042]*/ }
     /*[0042]*/ loadSound(54);
-    /*[0044]*/ stopObjectCode();
+    /*[0044]*/ //stopObjectCode();
     }
 
 void R030_Exit(){
     /*[0000]*/ stopScript(122);                                                     // stop Dr Fred: Entered Lab
     /*[0002]*/ stopScript(124);                                                     // Wait for actor finish walk. Activate sandy
     /*[0004]*/ stopSound(59);                                                       // stop sound
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 
@@ -578,7 +578,7 @@ void R030_Exit(){
 
 void R031_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R031_Exit(){
@@ -587,7 +587,7 @@ void R031_Exit(){
     /*[0004]*/ stopScript(112);                                                     // stop Purple Tentacle: Check Actor X > 20; print "What are you doing here?"
     /*[0006]*/ stopScript(110);                                                     // stop Green Tentacle: Storm Dr. Freds Lab
     /*[0008]*/ stopScript(94);                                                      // stop Weird Ed: Storm Dr. Freds Lab
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 
@@ -597,7 +597,7 @@ void R031_Exit(){
 
 void R032_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -607,13 +607,13 @@ void R032_Entry(){
 
 void R033_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R033_Exit(){
     /*[0000]*/ stopSound(56);                                                       // stop sound Intro Comet
     /*[0002]*/ stopSound(57);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -624,7 +624,7 @@ void R033_Exit(){
 void R036_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
     /*[0002]*/ loadSound(10);                                                       // sound Piggy Bank Break
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -634,7 +634,7 @@ void R036_Entry(){
 
 void R037_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -644,7 +644,7 @@ void R037_Entry(){
 
 void R038_Entry(){
     /*[0000]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -654,7 +654,7 @@ void R038_Entry(){
 
 void R039_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -665,7 +665,7 @@ void R039_Entry(){
 void R040_Entry(){
     /*[0000]*/ setState08(249);                                                     // < No Name >
     /*[0002]*/ lights(2);                                                           // Normal Lights
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -675,7 +675,7 @@ void R040_Entry(){
 
 void R041_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 void R041_Exit(){
@@ -686,7 +686,7 @@ void R041_Exit(){
     /*[0008]*/ if (VAR_RESULT == 1) {
     /*[000D]*/   startSound(32);                                                    // sound Alarm 1
     /*[000F]*/ }
-    /*[000F]*/ stopObjectCode();
+    /*[000F]*/ //stopObjectCode();
 }
 
 
@@ -695,7 +695,7 @@ void R041_Exit(){
  **/
 void R042_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -706,7 +706,7 @@ void R042_Entry(){
 void R043_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ loadSound(19);
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 
@@ -718,7 +718,7 @@ void R044_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);                                                       // stop sound Alarm 1
     /*[0004]*/ startScript(52);                                                     // start Repeat Outside Sound
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 void R044_Exit(){
@@ -728,7 +728,7 @@ void R044_Exit(){
     /*[0007]*/ if (VAR_RESULT == 1) {
     /*[000C]*/   startSound(32);                                                    // sound Alarm 1
     /*[000E]*/ }
-    /*[000E]*/ stopObjectCode();
+    /*[000E]*/ //stopObjectCode();
 }
 
 
@@ -741,7 +741,7 @@ void R045_Entry(){
     /*[0002]*/ Var[92] = 1;                                                         // Kid Select: Number Selected = 1 (Dave)
     /*[0005]*/ loadSound(54);
     /*[0007]*/ loadScript(109);                                                     // load script Intro: Kid Selection: Update Var States
-    /*[0009]*/ stopObjectCode();
+    /*[0009]*/ //stopObjectCode();
 }
 
 
@@ -752,7 +752,7 @@ void R045_Entry(){
 
 void R046_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -765,7 +765,7 @@ void R047_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);                                                       // stop sound Alarm 1
     /*[0004]*/ stopSound(33);                                                       // stop sound Alarm 2
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 /**
@@ -773,7 +773,7 @@ void R047_Entry(){
  */
 void R048_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -782,7 +782,7 @@ void R048_Entry(){
  */
 void R049_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
-    /*[0002]*/ stopObjectCode();
+    /*[0002]*/ //stopObjectCode();
 }
 
 
@@ -793,7 +793,7 @@ void R050_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ loadSound(19);                                                       // load sound Light Beep
     /*[0004]*/ stopSound(32);                                                       // stop sound Alarm 1
-    /*[0006]*/ stopObjectCode();
+    /*[0006]*/ //stopObjectCode();
 }
 
 void R050_Exit(){
@@ -801,7 +801,7 @@ void R050_Exit(){
     /*[0003]*/ if (VAR_RESULT == 1) {
     /*[0008]*/   startSound(32);                                                    // sound Alarm 1
     /*[000A]*/ }
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
 
 
@@ -828,7 +828,7 @@ void R051_Entry(){
     /*[0028]*/   loadScript(121);                                                   //  start Dr Fred: Free of machines control
     /*[002A]*/ }
     /*[002A]*/ loadScript(123);                                                     // start Meteor: Fire Radiation
-    /*[002C]*/ stopObjectCode();
+    /*[002C]*/ //stopObjectCode();
 }
 
 void R051_Exit(){
@@ -836,7 +836,7 @@ void R051_Exit(){
     /*[0002]*/ putActorInRoom(20,0);                                                // Meteor Radiation leaves room
     /*[0005]*/ putActor(20,0,0);
     /*[0009]*/ stopScript(123);                                                     // stop Meteor: Fire Radiation
-    /*[000B]*/ stopObjectCode();
+    /*[000B]*/ //stopObjectCode();
 }
 
 
@@ -847,7 +847,7 @@ void R051_Exit(){
 void R052_Entry(){
     /*[0000]*/ lights(2);                                                           // Normal Lights
     /*[0002]*/ stopSound(32);                                                       // stop sound Alarm 1
-    /*[0004]*/ stopObjectCode();
+    /*[0004]*/ //stopObjectCode();
 }
 
 void R052_Exit(){
@@ -855,5 +855,5 @@ void R052_Exit(){
     /*[0003]*/ if (VAR_RESULT == 1) {
     /*[0008]*/   startSound(32);                                                    // soumd Alarm 1
     /*[000A]*/ }
-    /*[000A]*/ stopObjectCode();
+    /*[000A]*/ //stopObjectCode();
 }
