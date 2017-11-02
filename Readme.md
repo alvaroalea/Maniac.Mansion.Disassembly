@@ -16,7 +16,7 @@ With a bit of lucky using conditional compilation can reuse most of the code.
 ### Mouse driver
 Create some code to manage the mouse and keyboard, I will like to include suport for:
 - AMX mouse
-- Kempston/Genious mouse
+- Kempston/Genius mouse
 - Amiga/Atari mouse on kempston joystick interface
 - OPQA and Space (no there will not be a option for QAOP, sorry folks)
 

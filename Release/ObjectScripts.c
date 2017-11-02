@@ -678,6 +678,200 @@ void objectScripts (int action, int activeObject, int activeObject2){
             }       // end switch_action 386
             break;  // end obj 386
 
+/**
+ * Room 3: Downstairs Lounge Room
+ */
+
+/** Cassette Player **/
+//roomobj-3-207.dmp
+      case 207:
+		 switch (action){
+		case VER_TurnOn:
+    /*[0025]*/ if (!getState08(47)) {                                               // if Cassette Tape Not In Player
+    /*[0029]*/   if (!getState08(124)) {                                            //  if Circuit Breaker == Power On
+    /*[002D]*/     setState08(207);                                                 //   set Cassette Player has tape
+    /*[002F]*/     startScript(104);                                                //   start Tape Player: Play Tape
+    /*[0031]*/     if (Var[13] == 25) {                                             //   Tape Contents == Tentacle Mating Call
+    /*[0036]*/       startScript(15);                                               //    start Cassette: Play, Break Windows/Free Key
+    /*[0038]*/     }
+    /*[0038]*/   }
+    /*[0038]*/ } else {                                                             // -
+    /*[003B]*/   printEgo("There's no tape in the player.");
+    /*[0056]*/ }
+    /*[0056]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_TurnOff:
+    /*[0057]*/ if (getState08(207)) {                                               //   Cassette Player has tape?
+    /*[005B]*/   clearState08(207);                                                 //    Remove Tape
+    /*[005D]*/   stopSound(25);
+    /*[005F]*/   stopSound(44);
+    /*[0061]*/   stopMusic();                                                       //    stop music
+    /*[0062]*/   stopScript(15);                                                    //    stop Cassette: Play, Break Windows/Free Key
+    /*[0064]*/ }
+    /*[0064]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Use:
+    /*[0065]*/ if (activeObject2 == 156) {                                          // Use Cassette Tape with Cassette Player
+    /*[0069]*/   setOwnerOf(156,14);                                                // Green Tentacle owns Tape
+    /*[006C]*/   clearState08(47);                                                  // Tape Hidden
+    /*[006E]*/   clearState02(47);                                                  // Tape Hidden
+    /*[0070]*/ }
+    /*[0070]*/ //stopObjectCode();                                                    // --
+		break;
+       }       // end switch_action 207
+       break;  // end obj 207
+
+/** Couch **/
+//roomobj-3-273.dmp
+      case 273:
+		 switch (action){
+
+		case VER_Push:
+		case VER_Pull:
+    /*[0019]*/ printEgo("I can't budge it.");                                       // Push Couch
+    /*[0029]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+/**Door **/
+//roomobj-3-38.dmp
+      case 38:
+		 switch (action){
+
+		    case VER_Open:
+    /*[001A]*/ startScript(4);                                                      // start Door: Open
+    /*[001C]*/ setState08(37);                                                      // Open Door (in room 10)
+    /*[001E]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Close:
+    /*[001F]*/ startScript(5);                                                      // start Door: Close
+    /*[0021]*/ clearState08(37);                                                    // Close Door (in room 10)
+    /*[0023]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_WalkTo:
+    /*[0024]*/ if (getState08(activeObject)) {                                      // If Door Open
+    /*[0027]*/   loadRoomWithEgo(37,10);                                            //  Enter Room 10 at Door
+    /*[002A]*/ }
+    /*[002A]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+/** Old Fashioned Radio **/
+//roomobj-3-39.dmp
+      case 39:
+		 switch (action){
+
+		    case VER_Open:
+    /*[002D]*/ setState08(activeObject);                                                        // Open Radio
+    /*[002E]*/ Var[29] = 0;
+    /*[0031]*/ stopSound(20);
+    /*[0033]*/ stopSound(29);
+    /*[0035]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Close:
+    /*[0036]*/ clearState08(activeObject);                                                      // Close Radio
+    /*[0037]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_Fix:
+    /*[0038]*/ if (activeObject2 == 40) {                                           // Fix Radio with Radio Tube
+    /*[003C]*/   clearState08(40);                                                  //  Show radio tube
+    /*[003E]*/   clearState02(40);                                                  //  Show radio tube
+    /*[0040]*/   setOwnerOf(40,0);                                                  //  Radio tube has no owner
+    /*[0043]*/ } else if (getState08(40)) {
+    /*[004A]*/   printEgo("That doesn't seem to work.");
+    /*[0062]*/ }
+    /*[0062]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_TurnOn:
+    /*[0063]*/ clearState08(activeObject);                                                      // Close Radio
+    /*[0064]*/ if (!getState08(40)) {                                               // Radio Tube
+    /*[0068]*/   if (!getState08(124)) {                                            // Power is on?
+    /*[006C]*/     if (Var[29] == 0) {
+    /*[0071]*/       Var[29] = 1;                                                   // Radio On
+    /*[0074]*/       startSound(20);
+    /*[0076]*/     }
+    /*[0076]*/   }
+    /*[0076]*/ } else {                                                             // -
+    /*[0079]*/   printEgo("I can't get it to work.");
+    /*[008D]*/ }
+    /*[008D]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		Case VER_TurnOff:
+    /*[008E]*/ clearState08(activeObject);
+    /*[008F]*/ if (Var[29] == 0) {                                                  // Radio == Off?
+    /*[0094]*/   printEgo("It wasn't on.");
+    /*[00A1]*/ } else {                                                             // -
+    /*[00A4]*/   Var[29] = 0;                                                       // Radio = Off
+    /*[00A7]*/   stopSound(20);
+    /*[00A9]*/   stopSound(29);
+    /*[00AB]*/ }
+    /*[00AB]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Use:
+    /*[00AC]*/ clearState08(activeObject);
+    /*[00AD]*/ if (Var[29] == 0) {                                                  // Radio == off
+    /*[00B2]*/   printEgo("It's not turned on.");
+    /*[00C4]*/ } else {                                                             // -
+    /*[00C7]*/   startSound(29);
+    /*[00C9]*/ }
+    /*[00C9]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+
+/** Radio Tube **/
+//roomobj-3-40.dmp
+      case 40:
+		 switch (action){
+
+		    case VER_PickUp:
+    /*[001E]*/ if (VAR_EGO == 5) {                                                  // If kid == Bernard
+    /*[0023]*/   pickupObject(0);                                                   //  Pickup
+    /*[0025]*/ } else {                                                             // -
+    /*[0028]*/   printEgo("I don't know how this stuff works!");
+    /*[0046]*/ }
+    /*[0046]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Use:
+    /*[0047]*/ doSentence(6,255,254);                                               // Fix _cmdObject with _cmdObject2
+    /*[004B]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+
+
+
+
 
 
       } // END switch (activeObject).
