@@ -393,8 +393,6 @@ void objectScripts (int action, int activeObject, int activeObject2){
 
 /** Bushes **/
 //roomobj-1-264.dmp
-      case 264:
-		 break;
 
 /** Contract **/
 //roomobj-1-27.dmp
@@ -499,8 +497,6 @@ void objectScripts (int action, int activeObject, int activeObject2){
 
 /** Tombstone **/
 //roomobj-1-31.dmp
-      case 31:
-		 break;
 
 /** Doorbell **/
 //roomobj-1-386.dmp
@@ -532,9 +528,155 @@ void objectScripts (int action, int activeObject, int activeObject2){
             break;  // end obj 386
 
 
+/**
+ * Room 2: Bottom of Pool
+ */
+
+/** Glowing Key **/
+//roomobj-2-108.dmp
+      case 108:
+		 switch (action){
+
+		    case VER_PickUp:
+    /*[001F]*/ pickupObject(0);                                                     // Pickup Key
+    /*[0021]*/ //stopObjectCode();                                                    // --
+		break;
 
 
+		    case VER_Use:
+    /*[0022]*/ doSentence(11,255,254);                                              // Use Key in _cmdOjbect2
+    /*[0026]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
 
+/** Radio **/
+//roomobj-2-109.dmp
+      case 109:
+		 switch (action){
+
+		    case VER_PickUp:
+    /*[001D]*/ pickupObject(0);                                                     // Pickup Radio
+    /*[001F]*/ pickupObject(134);                                                   // Pickup Batteries
+    /*[0021]*/ setOwnerOf(134,14);                                                  // Green Tentacle owns Batteries
+    /*[0024]*/ setState08(107);                                                     // Radio in Pool Area hidden
+    /*[0026]*/ setState02(107);                                                     // Radio in Pool Area hidden
+    /*[0028]*/ //stopObjectCode();                                                    // --
+		break;
+
+		    case VER_Open:
+    /*[0029]*/ if (!getState08(109)) {                                              // Radio Not Taken?
+    /*[002D]*/   doSentence(1,109,0);
+    /*[0031]*/   doSentence(14,109,0);
+    /*[0035]*/ } else {                                                             // -
+    /*[0038]*/   VAR_RESULT = getObjectOwner(134);
+    /*[003B]*/   if (VAR_RESULT == 14) {                                            // If green tentacle still owns batteries
+    /*[0040]*/     printEgo("Batteries!");
+    /*[004C]*/     setOwnerOf(134,VAR_EGO);                                         // kid owns batteries
+    /*[004F]*/     stopSound(20);
+    /*[0051]*/   }
+    /*[0051]*/ }
+    /*[0051]*/ //stopObjectCode();                                                    // --
+		break;
+
+		case VER_TurnOn:
+    /*[0052]*/ VAR_RESULT = getObjectOwner(134);
+    /*[0055]*/ if (VAR_RESULT == 14) {                                              // if green tentacle still owns batties
+    /*[005A]*/   startSound(20);                                                    //  turn on radio
+    /*[005C]*/ }
+    /*[005C]*/ //stopObjectCode();                                                    // --
+		break;
+
+		case VER_TurnOff:
+    /*[005D]*/ stopSound(20);                                                       // turn off radio
+    /*[005F]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Batteries **/
+//roomobj-2-134.dmp
+      case 134:
+		 switch (action){
+		    case VER_Use:
+    /*[001B]*/ if (activeObject2 == 51) {                                           // Flashlight?
+    /*[001F]*/   Var[31] = 2;                                                       // Flashlight has Battery = Full
+    /*[0022]*/   setOwnerOf(134,0);                                                 // Remove Batteries
+    /*[0025]*/ }
+    /*[0025]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Ladder **/
+//roomobj-2-138.dmp
+      case 138:
+		 switch (action){
+		    case VER_WalkTo:
+    /*[0018]*/ loadRoomWithEgo(139,6);                                              // Enter Pool Area at Ladder
+    /*[001B]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Red Button **/
+//roomobj-2-275.dmp
+      case 275:
+		 switch (action){
+		case VER_Push:
+	    case VER_Use:
+    /*[0020]*/ startSound(27);                                                      // Beep
+    /*[0022]*/ startScript(57);                                                     // start Cutscene: Game Over
+    /*[0024]*/ //stopObjectCode();                                                    // --
+		break;
+
+		    case VER_Read:
+    /*[0025]*/ printEgo("DO NOT PRESS UNDER ANY CIRCUMSTANCES!");                   // Read
+    /*[0047]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Pool Chair **/
+//roomobj-2-326.dmp
+      case 326:
+		 switch (action){
+		    case VER_PickUp:
+    /*[001C]*/ startScript(65);                                                     // start Print "Its too Heavy"
+    /*[001E]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Drain **/
+//roomobj-2-327.dmp
+
+/** Exposed cooling rods **/
+//roomobj-2-328.dmp
+      case 328:
+		 switch (action){
+		    case VER_WalkTo:
+    /*[0028]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_WhatIs:
+    /*[0029]*/ printEgo("I'm not going to touch cooling rods!");                    // Walk To
+    /*[0049]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
+
+/** Radioactive **/
+//roomobj-2-329.dmp
+      case 329:
+		 switch (action){
+		case VER_WhatIs:
+    /*[0023]*/ printEgo("I'm not going to touch that goo!");                        // What is
+    /*[003F]*/ //stopObjectCode();                                                    // --
+		break;
+            }       // end switch_action 386
+            break;  // end obj 386
 
 
 

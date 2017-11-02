@@ -126,7 +126,11 @@ void setOwnerOf(int n,int m){
 void pickupObject(int n){
 
 }
-        
+ 
+int  getObjectOwner(int obj){
+
+}
+       
 void printEgo(char *p){
 
 }
