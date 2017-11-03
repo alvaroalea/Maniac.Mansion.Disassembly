@@ -814,7 +814,7 @@ void objectScripts (int action, int activeObject, int activeObject2){
 		break;
 
 
-		Case VER_TurnOff:
+		case VER_TurnOff:
     /*[008E]*/ clearState08(activeObject);
     /*[008F]*/ if (Var[29] == 0) {                                                  // Radio == Off?
     /*[0094]*/   printEgo("It wasn't on.");
