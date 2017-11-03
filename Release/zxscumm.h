@@ -5,6 +5,7 @@
 int Var[255];
 int VAR_ACTIVE_ACTOR;
 int VAR_EGO;
+#define kModeNoNewKid 0
 
 // SOUND MANAGEMENT
 void stopSound(int n);
@@ -12,6 +13,7 @@ void startSound(int n);
 void loadSound( int n);
 void stopMusic(void);
 void unlockSound(int n);
+void lockSound(int n);
 
 // SCRIPTS MANAGEMENT
 bool isScriptRunning(int n);
@@ -19,6 +21,7 @@ void startScript(int n);
 void stopScript(int n);
 void unlockScript(int n);
 void loadScript(int n);
+void lockScript(int n);
 
 // ACTORS
 void putActorInRoom(int actor, int room);
@@ -49,6 +52,6 @@ void printEgo(char *p);
 void print(int color,char *p);
 void doSentence(int n, int m, int o);
 void loadRoomWithEgo(int n,int m);
-
+void cursorCommand(int n);
 
 

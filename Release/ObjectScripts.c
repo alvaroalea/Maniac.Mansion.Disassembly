@@ -865,11 +865,342 @@ void objectScripts (int action, int activeObject, int activeObject2){
         }       // end switch_action 386
         break;  // end obj 386
 
+/** Glass Chandelier **/
+//roomobj-3-41.dmp
+
+
+
+/** Broken Chandelier **/
+//roomobj-3-42.dmp
+
+
+
+/** Old Rusty Key **/
+//roomobj-3-43.dmp
+      case 43:
+		 switch (action){
+
+		    case VER_PickUp:
+    /*[0021]*/ pickupObject(0);                                                     // Pickup
+    /*[0023]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Use:
+    /*[0024]*/ doSentence(11,255,254);                                              // Use _cmdObject2 with _cmdObject
+    /*[0028]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+/** Cabinet Door **/
+//roomobj-3-44.dmp
+      case 44:
+		 switch (action){
+
+		    case VER_Open:
+    /*[0020]*/ startScript(4);                                                      // start Door: Open
+    /*[0022]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Close:
+    /*[0023]*/ startScript(5);                                                      // start Door: Close
+    /*[0025]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+/** Key **/
+//roomobj-3-445.dmp
+      case 445:
+		 switch (action){
+
+			case VER_Pull:
+		    case VER_PickUp:
+    /*[0017]*/ printEgo("I can't reach it.");
+    /*[0027]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+/** Window **/
+//roomobj-3-45.dmp
+
+
+
+/** Window **/
+//roomobj-3-46.dmp
+
+
+
+/** Cassette Tape **/
+//roomobj-3-47.dmp
+      case 47:
+		 switch (action){
+
+		    case VER_PickUp:
+    /*[0023]*/ if (getState08(207)) {                                               // Cassette Player is playing?
+    /*[0027]*/   printEgo("It's still playing!");
+    /*[003A]*/ } else {                                                             // -
+    /*[003D]*/   setOwnerOf(156,VAR_EGO);                                           // Kid owns Tape
+    /*[0040]*/   setState08(activeObject);                                                      // Tape Taken
+    /*[0041]*/   setState02(activeObject);                                                      // Tape Taken
+    /*[0042]*/ }
+    /*[0042]*/ //stopObjectCode();
+			break;
+
+		case VER_TurnOn:
+    /*[0043]*/ if (!getState08(activeObject)) {                                     // If Casette Player Off
+    /*[0046]*/   doSentence(4,207,0);                                               //  Turn On Cassette Player
+    /*[004A]*/ }
+    /*[004A]*/ //stopObjectCode();
+			break;
+
+		case VER_TurnOff:
+    /*[004B]*/ if (!getState08(activeObject)) {                                     // If Casette Player Off
+    /*[004E]*/   doSentence(5,207,0);                                               //  Turn Off Cassette Player
+    /*[0052]*/ }
+    /*[0052]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+/** Door **/
+//roomobj-3-93.dmp
+      case 93:
+		 switch (action){
+
+		    case VER_Open:
+    /*[001A]*/ startScript(4);                                                      // start Door: Open
+    /*[001C]*/ setState08(102);                                                     // Door Open (other side)
+    /*[001E]*/ //stopObjectCode();
+			break;
+
+		    case VER_Close:
+    /*[001F]*/ startScript(5);                                                      // start Door: Close
+    /*[0021]*/ clearState08(102);                                                   // Door Close (other side)
+    /*[0023]*/ //stopObjectCode();
+			break;
+
+		    case VER_WalkTo:
+    /*[0024]*/ if (getState08(activeObject)) {                                      // Door is open?
+    /*[0027]*/   loadRoomWithEgo(102,5);                                            //  Kid enters Library at Door
+    /*[002A]*/ }
+    /*[002A]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+/**
+ * Room 4: Dungeon
+ */
+
+/** Door **/
+//roomobj-4-126.dmp
+      case 126:
+		 switch (action){
+
+		    case VER_Open:
+    /*[0020]*/ if (!getState08(activeObject)) {                                     // Door Locked?
+    /*[0023]*/   startScript(64);                                                   //  start Print "The door is locked"
+    /*[0025]*/ }
+    /*[0025]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Close:
+    /*[0026]*/ startScript(51);                                                     // start Dungeon: Close Entry Door
+    /*[0028]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+			case VER_Unlock:
+	    	case VER_Use:
+    /*[0029]*/ if (activeObject2 == 43) {                                           // Use Old Rusty Key with Door
+    /*[002D]*/   startScript(4);                                                    // start Door: Open
+    /*[002F]*/   setState08(122);                                                   // Open Door (Room8: Basement)
+    /*[0031]*/ } else {                                                             // -
+    /*[0034]*/   startScript(66);                                                   // start Print "I can't unlock the door with this."
+    /*[0036]*/ }
+    /*[0036]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_WalkTo:
+    /*[0037]*/ if (getState08(activeObject)) {                                      // Door Unlocked?
+    /*[003A]*/   clearState08(126);                                                 //  Close Door
+    /*[003C]*/   clearState08(122);                                                 //  Close Door (Room8: Basement)
+    /*[003E]*/   loadRoomWithEgo(122,8);                                            //  Enter Basement at Door
+    /*[0041]*/ }
+    /*[0041]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+/** Outer Door **/
+//roomobj-4-127.dmp
+      case 127:
+		 switch (action){
+
+		    case VER_Open:
+    /*[001E]*/ if (!getState04(activeObject)) {                                     // Paddlocks unLocked?
+    /*[0021]*/   startScript(4);                                                    //  start Door: Open
+    /*[0023]*/ } else {                                                             // -
+    /*[0026]*/   startScript(64);                                                   //  start Print "The door is locked"
+    /*[0028]*/ }
+    /*[0028]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_Close:
+    /*[0029]*/ if (getState08(activeObject)) {                                      // If door open
+    /*[002C]*/   clearState08(activeObject);                                                    //  Close door
+    /*[002D]*/   startSound(42);                                                    //  sound Steel Door
+    /*[002F]*/ }
+    /*[002F]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+/** Top Padlock **/
+//roomobj-4-128.dmp
+      case 128:
+		 switch (action){
+
+			case VER_Unlock:		    
+			case VER_Use:
+    /*[0023]*/ if (activeObject2 == 108) {                                          // Use Glowing Key with Top Padlock
+    /*[0027]*/   if (!getState08(activeObject)) {                                   //  Padlock locked?
+    /*[002A]*/     setState08(activeObject);                                                    //   Unlock Padlock
+    /*[002B]*/     startSound(12);                                                  //   sound Light Switch
+    /*[002D]*/   }
+    /*[002D]*/   if (getState08(129)) {                                             // Is Bottom Padlock unlocked
+    /*[0031]*/     clearState04(127);                                               //  Yes, Unlock the Outer Door
+    /*[0033]*/   }
+    /*[0033]*/ } else {                                                             // -
+    /*[0036]*/   startScript(66);                                                   //  start Print "I can't unlock the door with this."
+    /*[0038]*/ }
+    /*[0038]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_Close:
+ 		case VER_Lock:
+    /*[0039]*/ if (getState08(activeObject)) {                                      // Padlock Unlocked?
+    /*[003C]*/   clearState08(activeObject);                                                    //   Lock Padlock
+    /*[003D]*/   startSound(12);                                                    //   sound Light Switch
+    /*[003F]*/ }
+    /*[003F]*/ setState04(127);                                                     // Lock the Outer Door
+    /*[0041]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
+
+
+
+
+/** Bottom Padlock **/
+//roomobj-4-129.dmp
+      case 129:
+		 switch (action){
+
+			case VER_Unlock:
+		    case VER_Use:
+    /*[0026]*/ if (activeObject2 == 108) {                                          // Use Glowing Key with Top Padlock
+    /*[002A]*/   if (!getState08(activeObject)) {                                   //  Padlock locked?
+    /*[002D]*/     setState08(activeObject);                                                    //   Unlock Padlock
+    /*[002E]*/     startSound(12);                                                  //   sound Light Switch
+    /*[0030]*/   }
+    /*[0030]*/   if (getState08(128)) {                                             // Is Top Padlock unlocked
+    /*[0034]*/     clearState04(127);                                               //  Yes, Unlock the Outer Door
+    /*[0036]*/   }
+    /*[0036]*/ } else {                                                             // -
+    /*[0039]*/   startScript(66);                                                   //  start Print "I can't unlock the door with this."
+    /*[003B]*/ }
+    /*[003B]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+			case VER_Lock:
+		    case VER_Close:
+    /*[003C]*/ if (getState08(activeObject)) {                                      // Padlock Unlocked?
+    /*[003F]*/   clearState08(activeObject);                                                    //   Lock Padlock
+    /*[0040]*/   startSound(12);                                                    //   sound Light Switch
+    /*[0042]*/ }
+    /*[0042]*/ setState04(127);                                                     // Lock the Outer Door
+    /*[0044]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
 
 
 
 
 
+/** Inner Door  **/
+//roomobj-4-130.dmp
+      case 130:
+		 switch (action){
+
+		case VER_Open:
+		case VER_Unlock:
+		case VER_Push:
+		case VER_Pull:
+	    case VER_Use:
+    /*[002A]*/ startScript(40);                                                     // start Lab Entry Keypad Input
+    /*[002C]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		case VER_Lock:
+    /*[002D]*/ if (getState08(activeObject)) {                                      // If door is open
+    /*[0030]*/   clearState08(activeObject);                                                    //  Close Door
+    /*[0031]*/   setState04(activeObject);                                                      //  Door locked
+    /*[0032]*/   clearState08(133);                                                 //  Close Door (Lab Entry)
+    /*[0034]*/   startSound(42);                                                    //  sound Steel Door
+    /*[0036]*/ }                                                                    // --
+    /*[0036]*/ //stopObjectCode();                                                    // --
+		break;
+
+
+		    case VER_WalkTo:
+    /*[0037]*/ if (getState08(activeObject)) {                                      // If door is open
+    /*[003A]*/   putActorInRoom(14,0);                                              //  Green Tentacle Leaves
+    /*[003D]*/   putActor(14,0,0);
+    /*[0041]*/   putActorInRoom(9,30);                                              //  Dr. Fred Enters Lab: Zom-b-Matic
+    /*[0044]*/   putActor(9,20,20);
+    /*[0048]*/   if (Var[135] == 0) {                                               //  Purple chased out of lab == No
+    /*[004D]*/     putActorInRoom(13,31);                                           //   Purple enters Lab: Entry
+    /*[0050]*/     putActor(13,44,63);
+    /*[0054]*/     startScript(112);                                                //   start Purple Tentacle: Check Actor X > 20; print "What are you doing here?"
+    /*[0056]*/     loadScript(43);
+    /*[0058]*/     lockScript(43);
+    /*[005A]*/     loadSound(63);
+    /*[005C]*/     lockSound(63);
+    /*[005E]*/   }
+    /*[005E]*/   cursorCommand( kModeNoNewKid ) ;                                    // Disable New Kid verb
+    /*[0060]*/   startScript(7);                                                    // start Game: Meltdown Stop
+    /*[0062]*/   stopScript(131);                                                   // stop Meteor Police: Timer until arrival
+    /*[0064]*/   stopScript(138);                                                   // stop Cutscene: Dr. Fred Play Meteor Mess Trigger
+    /*[0066]*/   stopScript(96);                                                    // stop Dr Fred: Play Meteor Mess
+    /*[0068]*/   loadRoomWithEgo(133,31);                                           // Enter Lab: Entry
+    /*[006B]*/ }
+    /*[006B]*/ //stopObjectCode();                                                    // --
+		break;
+        }       // end switch_action 386
+        break;  // end obj 386
 
 
 

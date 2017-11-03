@@ -22,6 +22,10 @@ void unlockSound(int n){
 
 }
 
+void lockSound(int n){
+
+}
+
 // GESTION DE SCRIPTS
 bool isScriptRunning(int n){
   return FALSE;
@@ -40,6 +44,10 @@ void unlockScript(int n){
 }
 
 void loadScript(int n){
+
+}
+
+void lockScript(int n){
 
 }
 
@@ -147,3 +155,6 @@ void loadRoomWithEgo(int n,int m){
 
 }
 
+void cursorCommand(int n){ 
+}
+;
