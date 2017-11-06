@@ -2,599 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-/** Badge **/
-//roomobj-4-193.dmp
-      case 193:
-		 switch (action){
-
-		    case VER_PickUp:
-    /*[001B]*/ pickupObject(0);                                                     // Pickup
-    /*[001D]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Read:
-    /*[001E]*/ printEgo("Meteor Police, badge number 714.");                        // Read
-    /*[003C]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Give:
-    /*[003D]*/ if (VAR_ACTIVE_ACTOR == 13) {                                        // Give to Purple Tentacle?
-    /*[0042]*/   startScript(154);                                                  // start Cutscene: Purple Tentacle reacts to police badge
-    /*[0044]*/ }
-    /*[0044]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Skeleton **/
-//roomobj-4-340.dmp
-      case 340:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[001C]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		case WhatIs:
-    /*[001D]*/ if (Var[101]*/ == 0) {                                                 // What is, already spoke?
-    /*[0022]*/   printEgo("I wonder if I know him.");
-    /*[0036]*/   Var[101]*/ = 1;                                                      //  Dungeon Skeleton 'Hovered Over' = Yes
-    /*[0039]*/ }
-    /*[0039]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Barred Window **/
-//roomobj-4-341.dmp
-
-
-
-/** Barred Window **/
-//roomobj-4-343.dmp
-
-
-
-/** Candle Holder **/
-//roomobj-4-345.dmp
-
-
-
-/** Loose Brick **/
-//roomobj-4-446.dmp
-      case 446:
-		 switch (action){
-
-		    case VER_Push:
-    /*[001D]*/ startScript(132);                                                    // start Dungeon Door Opened via Loose Brick
-    /*[001F]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-
-/**
- * Room 5: Library
- */
-
-
-/** Door **/
-//roomobj-5-102.dmp
-      case 102:
-		 switch (action){
-
-		    case VER_Open:
-    /*[001A]*/ startScript(4);                                                      // start Door: Open
-    /*[001C]*/ setState08(93);                                                      // Open Door (Room 3)
-    /*[001E]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Close:
-    /*[001F]*/ startScript(5);                                                      // start Door: Close
-    /*[0021]*/ clearState08(93);                                                    // Close Door (Room 3)
-    /*[0023]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_WalkTo:
-    /*[0024]*/ if (getState08(activeObject)) {                                      // If Door Open
-    /*[0027]*/   loadRoomWithEgo(93,3);                                             //  Enter Room Downstairs Lounge Room
-    /*[002A]*/ }
-    /*[002A]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Phone **/
-//roomobj-5-103.dmp
-      case 103:
-		 switch (action){
-
-		    case VER_Use:
-    /*[001B]*/ if (getState04(activeObject)) {                                      // If phone not repaired
-    /*[001E]*/   startScript(28);                                                   // start Phone: Disconnect if Kid walks too far away
-    /*[0020]*/   printEgo("It seems to be broken.");
-    /*[0034]*/ } else {                                                             // -
-    /*[0037]*/   startScript(27);                                                   // start Phone: Disconnect
-    /*[0039]*/   startScript(24);                                                   // start Pin: Entry - Edna Phone Number
-    /*[003B]*/ }
-    /*[003B]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_PickUp:
-    /*[003C]*/ startScript(28);                                                     // start Phone: Disconnect if Kid walks too far away
-    /*[003E]*/ if (getState04(activeObject)) {                                      // If phone not repaired
-    /*[0041]*/   printEgo("It seems to be broken.");                                //
-    /*[0055]*/ } else {                                                             // -
-    /*[0058]*/   startScript(28);                                                   //  start Phone: Disconnect if Kid walks too far away
-    /*[005A]*/   startSound(21);                                                    //  sound
-    /*[005C]*/ }
-    /*[005C]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-			case VER_Fix:  // FIXME: Check if goto removed its OK.       
-    /*[005D]*/ if (getState04(activeObject)) {                                      // If phone not repaired
-    /*[0060]*/   if (VAR_EGO == 7) {                                                //  If Jeff
-    /*[0065]*/   } else {                                                           //
-    /*[0068]*/ //  unless (VAR_EGO == 5) goto 00A6;                                 //  or Bernard
-    /*[0068]*/     if !(VAR_EGO == 5) printEgo("I don't know anything about electronics!"); //  or Bernard
-    /*[006D]*/   }
-    /*[006D]*/   if (activeObject2 == 119) {                                        //  And ActiveObject2 is Tools
-    /*[0071]*/     clearState04();                                                  //   Phone repaired
-    /*[0072]*/     printEgo("That should do it.");
-    /*[0083]*/   } else {                                                           // -
-    /*[0086]*/     printEgo("I need some tools or something?!");
-    /*[00A3]*/   }
-    /*[00A3]*/ //goto 00CB;                                                         // --
-    /*[00A6]*/ //printEgo("I don't know anything about electronics!");              //  else Other Kids
-    /*[00CB]*/ }
-    /*[00CB]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-
-/** Cassette Tape **/
-//roomobj-5-156.dmp
-      case 156:
-		 switch (action){
-
-		    case VER_PickUp:
-    /*[0023]*/ pickupObject(0);                                                     // Pickup Tape
-    /*[0025]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Use:
-    /*[0026]*/ doSentence(11,255,254);                                              // Use Tape with _cmdObject2
-    /*[002A]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Give:
-    /*[002B]*/ if (VAR_ACTIVE_ACTOR == 14) {                                        // Give to Green Tentacle
-    /*[0030]*/   if (VAR_ROOM == 20) {                                              //  if current room is Green Tentacle's
-    /*[0035]*/     startScript(102);                                                //   start Green Tentacle: Accepts Tape
-    /*[0037]*/   }
-    /*[0037]*/ }
-    /*[0037]*/ if (VAR_ACTIVE_ACTOR < 8) {                                          // Give to Kid
-    /*[003C]*/   setOwnerOf(0,VAR_ACTIVE_ACTOR);                                    //  Kid owns object
-    /*[003F]*/ }
-    /*[003F]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-
-/** Loose Panel **/
-//roomobj-5-236.dmp
-      case 236:
-		 switch (action){
-
-		    case VER_Open:
-    /*[0023]*/ setState08(activeObject);                                                        // Open Panel
-    /*[0024]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Close:
-    /*[0025]*/ clearState08(activeObject);                                                      // Close Panel
-    /*[0026]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-			case Push:		    
-			case VER_Pull:
-    /*[0027]*/ if (getState08(activeObject)) {                                      // Is Panel Open
-    /*[002A]*/   clearState08(activeObject);                                                    //  Close Panel
-    /*[002B]*/ } else {                                                             // -
-    /*[002E]*/   setState08(activeObject);                                                      //  Open Panel
-    /*[002F]*/ }
-    /*[002F]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Lamp **/
-//roomobj-5-315.dmp
-      case 315:
-		 switch (action){
-
-		case VER_TurnOn:
-    /*[0018]*/ startSound(12);                                                      // sound Light Switch
-    /*[001A]*/ setBitVar(VAR_ROOM,1,0);                                             // Room has light
-    /*[001E]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0020]*/ Var[117]*/ = 1;                                                        // Room light on
-    /*[0023]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		case VER_TurnOff:
-    /*[0024]*/ startSound(12);                                                      // sound Light Switch
-    /*[0026]*/ Var[117]*/ = 0;                                                        // Room light off
-    /*[0029]*/ if (Var[118]*/ == 0) {
-    /*[002E]*/   setBitVar(VAR_ROOM,1,1);                                           // Room loses light
-    /*[0032]*/   startScript(50);                                                   //  start Room Lights: Check for flashlight / room light status
-    /*[0034]*/ }
-    /*[0034]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Lamp **/
-//roomobj-5-316.dmp
-      case 316:
-		 switch (action){
-
-		case VER_TurnOn:
-    /*[0018]*/ startSound(12);                                                      // sound Light Switch
-    /*[001A]*/ setBitVar(VAR_ROOM,1,0);                                             // Room has light
-    /*[001E]*/ startScript(50);                                                     // start Room Lights: Check for flashlight / room light status
-    /*[0020]*/ Var[118]*/ = 1;                                                        // Room light on
-    /*[0023]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		case VER_TurnOff:
-    /*[0024]*/ startSound(12);                                                      // sound Light Switch
-    /*[0026]*/ Var[118]*/ = 0;                                                        // Room light off
-    /*[0029]*/ if (Var[117]*/ == 0) {
-    /*[002E]*/   setBitVar(4,1,1);                                                  // Room loses light
-    /*[0032]*/   startScript(50);                                                   //  start Room Lights: Check for flashlight / room light status
-    /*[0034]*/ }
-    /*[0034]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Staircase **/
-//roomobj-5-318.dmp
-      case 318:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[001F]*/ printEgo("Staircase out of order.");                                 // Walk To
-    /*[0035]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-			case VER_Fix:
-		    case VER_Use:
-    /*[0036]*/ printEgo("I can't fix the stairs with that.");                       // Fix/Use
-    /*[0053]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Chuck the plant **/
-//roomobj-5-319.dmp
-
-
-
-/** Chair **/
-//roomobj-5-320.dmp
-
-
-
-/** Sign **/
-//roomobj-5-440.dmp
-      case 440:
-		 switch (action){
-
-		    case VER_Read:
-    /*[0018]*/ printEgo("Staircase out of order.");                                 // Read
-    /*[002E]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-Fix {
-    /*[002F]*/ if (activeObject2 == 119) {                                          // Use tools with Sign
-    /*[0033]*/   printEgo("I'm not a carpenter.");
-    /*[0046]*/ } else {                                                             // -
-    /*[0049]*/   printEgo("That won't work.");
-    /*[0059]*/ }
-    /*[0059]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-
-/**
- * Room 6: Pool Area
- */
-
-
-/** Door **/
-//roomobj-6-104.dmp
-      case 104:
-		 switch (action){
-
-		    case VER_Open:
-    /*[0020]*/ if (!getState04(activeObject)) {                                     // If door is unlocked
-    /*[0023]*/   startScript(4);                                                    //  start Door: Open
-    /*[0025]*/   setState08(92);                                                    //  Open Door (Storage room)
-    /*[0027]*/ } else {                                                             // -
-    /*[002A]*/   startScript(64);                                                   //  start Print "The door is locked"
-    /*[002C]*/ }
-    /*[002C]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Close:
-    /*[002D]*/ startScript(5);                                                      // start Door: Close
-    /*[002F]*/ clearState08(92);                                                    // Close Door (Storage room)
-    /*[0031]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		case VER_Unlock:		    case VER_Use:
-    /*[0032]*/ if (activeObject2 == 125) {                                          // if Use Silver Key with Door
-    /*[0036]*/   clearState04();                                                    //  Unlock Door
-    /*[0037]*/   clearState04(92);                                                  //  Unlock Door (Storage room)
-    /*[0039]*/   doSentence(1,104,0);                                               //  Execute Verb: "Open Door"
-    /*[003D]*/ } else {                                                             // -
-    /*[0040]*/   startScript(66);                                                   //  start Print "I can't unlock the door with this."
-    /*[0042]*/ }
-    /*[0042]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		case VER_Lock:
-    /*[0043]*/ setState04();                                                        // Lock Door
-    /*[0044]*/ setState04(92);                                                      // Lock Door (Storage Room)
-    /*[0046]*/ doSentence(2,104,0);                                                 // Execute Verb: "Close Door"
-    /*[004A]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_WalkTo:
-    /*[004B]*/ if (getState08(activeObject)) {                                      // Is Door Open
-    /*[004E]*/   loadRoomWithEgo(92,36);                                            //  Enter Storage / Leading out to pool
-    /*[0051]*/ }
-    /*[0051]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Gate **/
-//roomobj-6-105.dmp
-      case 105:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[001E]*/ if (getState08(activeObject)) {
-    /*[0021]*/   if (Var[136]*/ == 1) {                                               // is Garage Destroyed?
-    /*[0026]*/     loadRoomWithEgo(75,52);                                          //  Enter Garage Destroyed
-    /*[0029]*/   } else {                                                           // -
-    /*[002C]*/     loadRoomWithEgo(110,16);                                         //  Enter Garage
-    /*[002F]*/   }
-    /*[002F]*/ }
-    /*[002F]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Open:
-    /*[0030]*/ startScript(4);                                                      // start Door: Open
-    /*[0032]*/ setState08(110);                                                     // Open Gate (Garage)
-    /*[0034]*/ setState08(75);                                                      // Open Gate (Destroyed Garage)
-    /*[0036]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-			case VER_Close:
-		    case VER_Push:
-    /*[0037]*/ startScript(5);                                                      // start Door: Close
-    /*[0039]*/ clearState08(110);                                                   // Open Gate (Garage)
-    /*[003B]*/ clearState08(75);                                                    // Open Gate (Destroyed Garage)
-    /*[003D]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-
-/** Swimming Pool **/
-//roomobj-6-106.dmp
-      case 106:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[0021]*/ if (!getState08(activeObject)) {                                     // If Pool Full
-    /*[0024]*/   printEgo("I don't want to get wet!");
-    /*[0039]*/ } else {                                                             // -
-    /*[003C]*/   printEgo("I'd better use the ladder.");
-    /*[0054]*/   doSentence(13,139,0);                                              // Use Ladder Script
-    /*[0058]*/ }
-    /*[0058]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Use:
-    /*[0059]*/ if (!getState08(activeObject)) {                                     // If Pool Full
-    /*[005C]*/   if (activeObject2 == 90) {                                         //  if Sponge
-    /*[0060]*/     Var[24]*/ = 2;                                                     //   Spong Contents = Radioactive Water
-    /*[0063]*/     startScript(75);                                                 //   start Sponge: Name
-    /*[0065]*/   }
-    /*[0065]*/   if (activeObject2 == 99) {                                         //  if Glass Jar
-    /*[0069]*/     Var[22]*/ = 2;                                                     //   Glass Jar Contents = Radioactive Water
-    /*[006C]*/     startScript(74);                                                 //   start Glass Jar: Name
-    /*[006E]*/   }
-    /*[006E]*/ }
-    /*[006E]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Radio **/
-//roomobj-6-107.dmp
-      case 107:
-		 switch (action){
-
-		case WhatIs:
-    /*[0017]*/ printEgo("I can't reach it.");                                       // Pickup
-    /*[0027]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Ladder **/
-//roomobj-6-139.dmp
-      case 139:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[0018]*/ loadRoomWithEgo(138,2);                                              // Enter Room 2, Bottom of Pool
-    /*[001B]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Ladder **/
-//roomobj-6-272.dmp
-      case 272:
-		 switch (action){
-
-		    case VER_WalkTo:
-    /*[0018]*/ printEgo("I'M not going down there%/%it's full of water!");          // Walk To
-    /*[0041]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Pool Chair **/
-//roomobj-6-323.dmp
-      case 323:
-		 switch (action){
-
-		case WhatIs:
-    /*[001C]*/ printEgo("I can't reach it.");                                       // What Is
-    /*[002C]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
-/** Old Tree **/
-//roomobj-6-324.dmp
-
-
-
-/**
- * Room 7: Kitchen
- */
-
-
-/** Old Batteries **/
-//roomobj-7-100.dmp
-      case 100:
-		 switch (action){
-
-		    case VER_PickUp:
-    /*[0021]*/ pickupObject(0);                                                     // Pikcup
-    /*[0023]*/ doSentence(13,56,0);                                                 // Walk To Refridgerator
-    /*[0027]*/ //stopObjectCode();                                                    // --
-		break;
-
-
-		    case VER_Use:
-    /*[0028]*/ if (activeObject2 == 51) {                                           // Flashlight
-    /*[002C]*/   Var[31]*/ = 1;                                                       // Flashlight has Battery = Yes
-    /*[002F]*/   Var[126]*/ = 60;                                                     // Flashlight Battery Charge
-    /*[0032]*/   setOwnerOf(100,0);                                                 // Remove Old Batteries
-    /*[0035]*/ }
-    /*[0035]*/ //stopObjectCode();                                                    // --
-		break;
-        }       // end switch_action 386
-        break;  // end obj 386
-
-
-
-
 /** Sealed Envelope **/
 //roomobj-7-234.dmp
       case 234:
@@ -675,7 +82,7 @@ Fix {
       case 280:
 		 switch (action){
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0017]*/ printEgo("Yuck!");                                                   // What Is
     /*[001E]*/ //stopObjectCode();                                                    // --
 		break;
@@ -1345,7 +752,7 @@ Fix {
       case 337:
 		 switch (action){
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0023]*/ printEgo("Yuck! I'm not touching that!");                            // What Is
     /*[003D]*/ //stopObjectCode();                                                    // --
 		break;
@@ -1365,7 +772,7 @@ Fix {
     /*[001B]*/ //stopObjectCode();                                                    // -- Walk To
 		break;
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[001C]*/ printEgo("It's too hot!");                                           // What Is
     /*[0029]*/ //stopObjectCode();                                                    // --
 		break;
@@ -1398,7 +805,7 @@ Fix {
 		break;
 
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0058]*/ printEgo("It's too hot!");                                           //
     /*[0065]*/ //stopObjectCode();                                                    // --
 		break;
@@ -2338,7 +1745,7 @@ Open.		    case VER_Pull:
 /** Dried Purple Slime **/
 //roomobj-14-365.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0024]*/ printEgo("I'M not going to touch that slime!");                      // What is
     /*[0042]*/ //stopObjectCode();                                                    // --
 		break;
@@ -4766,7 +4173,7 @@ Fix {
 /** Real Skeleton **/
 //roomobj-22-375.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[001F]*/ printEgo("Oooh! That's scary!");
     /*[0032]*/ //stopObjectCode();                                                    // --
 		break;
@@ -5318,7 +4725,7 @@ Pull.		    case VER_PickUp:
 /** Surplus Body **/
 //roomobj-25-308.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0024]*/ printEgo("Yuck!");                                                   // What Is
     /*[002B]*/ //stopObjectCode();                                                    // --
 		break;
@@ -5645,7 +5052,7 @@ Close.Fix {
 		break;
 
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0029]*/ printEgo("It bit me!");                                              //
     /*[0033]*/ //stopObjectCode();                                                    // --
 		break;
@@ -6026,7 +5433,7 @@ Close.		    case VER_Push:
 /** Floor Grating **/
 //roomobj-29-267.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[001F]*/ printEgo("I can't reach it.");                                       // What Is
     /*[002F]*/ //stopObjectCode();                                                    // --
 		break;
@@ -7170,7 +6577,7 @@ WalkTo - 0024
 /** * **/
 //roomobj-43-287.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 10;                                                        // Keypad Input = 10
     /*[0017]*/ print(255,"*");
@@ -7184,7 +6591,7 @@ WalkTo - 0024
 /** 0 **/
 //roomobj-43-288.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 0;                                                         // Keypad Input = 0
     /*[0017]*/ print(255,"0");
@@ -7197,7 +6604,7 @@ WalkTo - 0024
 /** # **/
 //roomobj-43-289.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 11;                                                        // Keypad Input = 11
     /*[0017]*/ print(255,"#");
@@ -7210,7 +6617,7 @@ WalkTo - 0024
 /** 1 **/
 //roomobj-43-422.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 1;                                                         // Keypad Input = 1
     /*[0017]*/ print(255,"1");
@@ -7223,7 +6630,7 @@ WalkTo - 0024
 /** 2 **/
 //roomobj-43-423.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 2;                                                         // Keypad Input = 2
     /*[0017]*/ print(255,"2");
@@ -7236,7 +6643,7 @@ WalkTo - 0024
 /** 3 **/
 //roomobj-43-424.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 3;                                                         // Keypad Input = 3
     /*[0017]*/ print(255,"3");
@@ -7249,7 +6656,7 @@ WalkTo - 0024
 /** 4 **/
 //roomobj-43-425.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 4;                                                         // Keypad Input = 4
     /*[0017]*/ print(255,"4");
@@ -7262,7 +6669,7 @@ WalkTo - 0024
 /** 5 **/
 //roomobj-43-426.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 5;                                                         // Keypad Input = 5
     /*[0017]*/ print(255,"5");
@@ -7275,7 +6682,7 @@ WalkTo - 0024
 /** 6 **/
 //roomobj-43-427.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0013]*/ startSound(19);                                                      // sound Light Beep
     /*[0015]*/ Var[49]*/ = 6;                                                         // Keypad Input = 6
     /*[0018]*/ print(255,"6");
@@ -7288,7 +6695,7 @@ WalkTo - 0024
 /** 7 **/
 //roomobj-43-428.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 7;                                                         // Keypad Input = 7
     /*[0017]*/ print(255,"7");
@@ -7301,7 +6708,7 @@ WalkTo - 0024
 /** 8 **/
 //roomobj-43-429.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 8;                                                         // Keypad Input = 8
     /*[0017]*/ print(255,"8");
@@ -7314,7 +6721,7 @@ WalkTo - 0024
 /** 9 **/
 //roomobj-43-430.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(19);                                                      // sound Light Beep
     /*[0014]*/ Var[49]*/ = 9;                                                         // Keypad Input = 9
     /*[0017]*/ print(255,"9");
@@ -7361,7 +6768,7 @@ WalkTo - 0024
 /** Syd **/
 //roomobj-45-243.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 1;                                                         // Kid Selected = Syd
     /*[0015]*/ print(255,"Syd - an aspiring musician%/%trying to start his own new-wave band.");
     /*[0051]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7374,7 +6781,7 @@ WalkTo - 0024
 /** Razor **/
 //roomobj-45-244.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 2;                                                         // Kid Selected = Razor
     /*[0015]*/ print(255,"Razor - lead singer for the punk band,/`Razor and the Scummettes.`");
     /*[0050]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7387,7 +6794,7 @@ WalkTo - 0024
 /** Michael **/
 //roomobj-45-245.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 4;                                                         // Kid Selected = Michael
     /*[0015]*/ print(255,"Michael - award winning photographer%/%for the college newspaper.");
     /*[0052]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7400,7 +6807,7 @@ WalkTo - 0024
 /** Bernard **/
 //roomobj-45-246.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 5;                                                         // Kid Selected = Bernard
     /*[0015]*/ print(255,"Bernard - president of the physics club%/%and winner of the college's Geek Award.");
     /*[005D]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7413,7 +6820,7 @@ WalkTo - 0024
 /** Wy **/
 //roomobj-45-247.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 6;                                                         // Kid Selected = Wy
     /*[0015]*/ print(255,"Wy - wants to be a famous novelist%/%and is waiting for a big break.");
     /*[0052]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7426,7 +6833,7 @@ WalkTo - 0024
 /** Jeff **/
 //roomobj-45-248.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[90]*/ = 7;                                                         // Kid Selected = Jeff
     /*[0015]*/ print(255,"Jeff - usually hangs out on the beach,/responds to the name, Surfer Dude.");
     /*[0055]*/ startScript(109);                                                    // Intro: Kid Selection: Update Var States
@@ -7439,7 +6846,7 @@ WalkTo - 0024
 /** Dave **/
 //roomobj-45-387.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(54);                                                      // sound Keypad Buttons
     /*[0014]*/ print(255,"Dave - Sandy's boyfri./Organizer of the rescue effort.");
     /*[0049]*/ //stopObjectCode();                                                    // --
@@ -7451,7 +6858,7 @@ WalkTo - 0024
 /** Start **/
 //roomobj-45-395.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ startSound(54);                                                      // sound Keypad Buttons
     /*[0014]*/ if (Var[92]*/ < 3) {                                                   // if Kids Slected < 3
     /*[0019]*/   print(255,"  Please select two kids besides Dave.");               //
@@ -7497,7 +6904,7 @@ WalkTo - 0024
 /** Load Game **/
 //roomobj-50-442.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[50]*/ = 2;                                                         // SaveLoad: Button Pressed = Load Game
     /*[0015]*/ startSound(19);                                                      // Beep
     /*[0017]*/ //stopObjectCode();                                                    // --
@@ -7509,7 +6916,7 @@ WalkTo - 0024
 /** Save Game **/
 //roomobj-50-443.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[50]*/ = 1;                                                         // SaveLoad: Button Pressed = Save Game
     /*[0015]*/ startSound(19);                                                      // Beep
     /*[0017]*/ //stopObjectCode();                                                    // --
@@ -7521,7 +6928,7 @@ WalkTo - 0024
 /** Continue Playing **/
 //roomobj-50-444.dmp
 
-		case WhatIs:
+		case VER_WhatIs:
     /*[0012]*/ Var[50]*/ = 3;                                                         // SaveLoad: Button Pressed = Continue Playing
     /*[0015]*/ startSound(19);                                                      // Beep
     /*[0017]*/ //stopObjectCode();                                                    // --
