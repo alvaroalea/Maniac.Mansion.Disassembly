@@ -51,3 +51,7 @@
 #define ACT_Sandy_Lab	23
 #define ACT_Sandy_CutScene	24
 
+// Cursor modes
+#define kMode_Normal 1
+
+

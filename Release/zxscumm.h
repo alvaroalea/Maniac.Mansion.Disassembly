@@ -32,13 +32,16 @@ void setActorBitVar(int actor, int bit, bool var);
 bool getActorBitVar(int actor, int bit);
 void loadCostume(int n);
 void lockCostume(int n);
+void walkActorTo(int actor, int x, int y);
 
 // OTHERS
 void lights(int n);
 void stopObjectCode(void); // Probably not needed
 void setBitVar(int a, int b, int c);
+bool getBitVar(int a, int b);
 bool getState08(int n);
 bool getState04(int n);
+// bool getState02(int n);
 void clearState08(int n);
 void clearState04(int n);
 void clearState02(int n);

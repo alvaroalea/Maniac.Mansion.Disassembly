@@ -85,6 +85,9 @@ void lockCostume(int n){
 
 }
 
+void walkActorTo(int actor, int x, int y){
+
+}
 
 // OTROS
 void lights(int n){
@@ -99,12 +102,20 @@ void setBitVar(int a, int b, int c){
 
 }
 
+bool getBitVar(int a, int b){
+   return FALSE;
+}
+
 bool getState08(int n){
   return FALSE;
 }
 bool getState04(int n){
   return FALSE;
 }
+/* NOT USED
+bool getState02(int n){
+  return FALSE;
+} */
 
 void clearState08(int n){
 
